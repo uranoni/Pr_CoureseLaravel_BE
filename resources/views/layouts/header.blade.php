@@ -1,12 +1,16 @@
-<header class="l-header l-header_overlay">
+<header class="l-header @isset($overlay) l-header_overlay @endisset">
 
-    <div class="l-navbar l-navbar_expand l-navbar_t-dark-trans js-navbar-sticky">
+    <div class="l-navbar l-navbar_expand @isset($overlay) l-navbar_t-dark-trans @else l-navbar_t-light @endisset js-navbar-sticky">
         <div class="container-fluid">
             <nav class="menuzord js-primary-navigation" role="navigation" aria-label="Primary Navigation">
 
                 <!--logo start-->
                 <a href="index.html" class="logo-brand">
-                    <img class="retina" src="assets/img/logo-dark.png" alt="Massive">
+                   @isset($overlay)
+                   <img class="retina" src="assets/img/logo-dark.png" alt="Massive">
+                   @else
+                   <img class="retina" src="assets/img/logo.png" alt="Massive">
+                   @endisset
                 </a>
                 <!--logo end-->
 

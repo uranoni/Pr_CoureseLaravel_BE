@@ -13,26 +13,26 @@
 
     <div class="wrapper">
 
-        <!--header start-->
-        @include('layouts.header')
-        <!--header end-->
-
-        <!--hero section-->
-        @yield('hero')
+        
+        @include('layouts.header',['overlay'=>(isset($overlay))? $overlay :null])
        
-        <!--hero section-->
 
-        <!--body content start-->
+  
+        @yield('hero')
+        @yield('page-title')
+      
+
+       
         <section class="body-content">
 
             @yield('content')
 
         </section>
-        <!--body content end-->
+        
 
-        <!--footer start 1-->
+      
         @include('layouts.footer')
-        <!--footer 1 end-->
+        
 
     </div>
     @include('layouts.js')

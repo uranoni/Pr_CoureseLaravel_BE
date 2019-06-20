@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['overlay'=>true])
 
 @section('hero')
 <div class="banner-state vertical-align text-center banner-13">
