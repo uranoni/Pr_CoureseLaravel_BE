@@ -23,4 +23,10 @@ Route::get('/contact', function () {
     return view('contact');
 }); 
 
+Route::get('/posts', function () {
+    return view('posts.list');
+});
 
+Route::get('/post/{id}', function ($id) {
+    return 'single post:'.$id;
+});
