@@ -13,20 +13,20 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('index');
-}); 
+});
 
 Route::get('/about', function () {
     return view('about');
-}); 
+});
 
 Route::get('/contact', function () {
     return view('contact');
-}); 
+});
 
 Route::get('/posts', function () {
     return view('posts.list');
 });
 
-Route::get('/post/{id}', function ($id) {
-    return 'single post:'.$id;
+Route::get('/posts/{id}', function ($id) {
+    return view('posts.show');
 });
