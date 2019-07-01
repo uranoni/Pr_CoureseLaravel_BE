@@ -35,6 +35,8 @@ Route::get('/contact', function () {
 Route::get('/posts/admin','PostController@admin');
 //提前擺放路由 會先找create 沒有metch 會往下找post show 的部分
 Route::get('/posts/create','PostController@create');
+Route::get('/posts/show/{post}','PostController@show');
+
 //CRUD
 //3 rountion
 //路由 由上往下找
