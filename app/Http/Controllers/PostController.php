@@ -38,4 +38,22 @@ class PostController extends Controller
     {
         return view('posts.showByAdmin',['post' => $post]);
     }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit',['post' => $post]);
+    }
+
+    public function update(Request $request,Post $post)
+    {
+        $post->fill($request->all());
+        
+        $datetime = date("Y-m-d H:i:s");
+        $post->updated_at =  $datetime;
+        $post->save();
+
+        return redirect('/posts/admin');
+    }
+
+
 }

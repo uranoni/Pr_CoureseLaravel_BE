@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+date_default_timezone_set("Asia/Taipei");
 Route::get('/', function () {
     return view('index');
 });
