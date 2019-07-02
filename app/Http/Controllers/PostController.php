@@ -47,7 +47,7 @@ class PostController extends Controller
     public function update(Request $request,Post $post)
     {
         $post->fill($request->all());
-        
+
         $datetime = date("Y-m-d H:i:s");
         $post->updated_at =  $datetime;
         $post->save();
@@ -55,5 +55,10 @@ class PostController extends Controller
         return redirect('/posts/admin');
     }
 
+    public function destory(Post $post)
+    {
+        $post->delete();
+        return redirect('/posts/admin');
+    }
 
 }
