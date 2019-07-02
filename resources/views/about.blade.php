@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('page-title')
 <section class="page-title background-title dark">
@@ -48,18 +48,25 @@
                 <div class="col-md-6">
                     <div class="">
                         <h4 class="text-uppercase">
-                             WELCOME TO MASSIVE
+                            WELCOME TO MASSIVE
                         </h4>
 
                         <p>
-                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-                            dolores. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis
+                            omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis
+                            iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                            rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                            fugit, sed quia consequuntur magni
+                            dolores. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                            quasi architecto beatae vitae dicta sunt
                             explicabo.
                         </p>
 
                         <p>
-                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets..
+                            Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis
+                            omnis fugats vitaes nemo minima rerums unsers sadips amets..
                         </p>
 
                     </div>
@@ -76,8 +83,12 @@
                 </h4>
 
                 <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                    sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+                    sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores. Sed ut perspiciatis unde
+                    omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                    ipsa quae ab illo inventore
                     veritatis et quasi architecto beatae vitae dicta sunt explicabo.
                 </p>
 
@@ -137,7 +148,8 @@
                             <h4>Creative design</h4>
                         </div>
                         <div class="desc">
-                            Fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend.
+                            Fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed
+                            nisi eleifend.
                         </div>
                     </div>
                 </div>
@@ -150,7 +162,8 @@
                             <h4>professional code</h4>
                         </div>
                         <div class="desc">
-                            Fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend.
+                            Fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed
+                            nisi eleifend.
                         </div>
                     </div>
                 </div>
@@ -163,7 +176,8 @@
                             <h4>easy customize</h4>
                         </div>
                         <div class="desc">
-                            Fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend.
+                            Fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. Praesent sed
+                            nisi eleifend.
                         </div>
                     </div>
                 </div>
@@ -311,7 +325,8 @@
             <div class="col-md-12">
                 <div class="heading-title text-center">
                     <h3 class="text-uppercase"> OUR HAPPY CLIENTS </h3>
-                    <p>We are a team of multi-skilled and curious digital specialists who are always up for a challenge and learning as fast as</p>
+                    <p>We are a team of multi-skilled and curious digital specialists who are always up for a challenge
+                        and learning as fast as</p>
                 </div>
 
                 <div id="clients-1">
