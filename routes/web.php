@@ -37,7 +37,6 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-
 Route::get('/posts/{post}/edit','PostController@edit');
 Route::get('/posts','PostController@index');
 
