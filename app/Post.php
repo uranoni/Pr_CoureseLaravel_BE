@@ -9,6 +9,6 @@ class Post extends Model
     protected $fillable = ['title','content','updated_at'];
 
     public function user(){
-        return $this->belongsTo('App/User');
+        return $this->belongsTo('App\User');
     }
 }
