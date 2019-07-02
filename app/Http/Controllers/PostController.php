@@ -58,7 +58,7 @@ class PostController extends Controller
     public function destory(Post $post)
     {
         $post->delete();
-        return redirect('/posts/admin');
+        // return redirect('/posts/admin');
     }
 
 }

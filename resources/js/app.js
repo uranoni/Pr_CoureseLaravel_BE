@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
- //註解bootstap 的js
+//註解bootstap 的js
 // require('./bootstrap');
 
 window.Vue = require('vue');
@@ -31,3 +31,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+document.deletePost = (id) => {
+    let result = confirm('Do you want to delete the post?');
+    if (result) {
+        let actionUrl = "/posts/" + id;
+        $.post(actionUrl, { _method: "delete" }).done(function () {
+            location.href = "/posts/admin";
+        })
+    }
+};

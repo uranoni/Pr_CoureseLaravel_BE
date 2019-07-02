@@ -41,22 +41,16 @@
     </div>
 </div>
 
-<form id="delete-form" action="/post/id" method="POST">
+{{-- <form id="delete-form" action="/post/id" method="POST">
     <input type="hidden" name="_method" value="delete">
     @csrf
-</form>
+</form> --}}
 @endsection
 
 
-@section('script')
+{{-- @section('script')
 <script>
-    let deletePost = (id)=>{
-        let result  = confirm('Do you want to delete the post?');
-        if(result){
-            let actionUrl = "/posts/"+id;
-            $("#delete-form").attr('action',actionUrl).submit();
-        }
-    };
+
 </script>
 
-@endsection
+@endsection --}}

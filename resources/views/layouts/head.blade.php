@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="Mosaddek">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!--favicon icon-->
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -9,7 +10,9 @@
 <title>General 1</title>
 
 <!--common style-->
-<link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
+<link
+    href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200'
+    rel='stylesheet' type='text/css'>
 
 <!-- inject:css -->
 <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
