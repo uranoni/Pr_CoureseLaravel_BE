@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBlogPost;
 use App\Post;
 
 class PostController extends Controller
@@ -25,8 +26,12 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
+        // $request->validate([
+        //     'title'=>'required|max:255',
+        //     'content'=>'required',
+        // ]);
         $post = new Post;
         $post->fill($request->all());
         $post->user_id = Auth::id();
@@ -49,8 +54,12 @@ class PostController extends Controller
         return view('posts.edit',['post' => $post]);
     }
 
-    public function update(Request $request,Post $post)
+    public function update(StoreBlogPost $request,Post $post)
     {
+        // $request->validate([
+        //     'title'=>'required|max:255',
+        //     'content'=>'required',
+        // ]);
         $post->fill($request->all());
 
         $datetime = date("Y-m-d H:i:s");
