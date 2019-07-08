@@ -22,36 +22,36 @@
 @section('content')
 <div class="page-content">
     <div class="container">
-
-        @if ($errors->any())
+        @include('posts._form')
+        {{-- @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $key => $error)
                 <li> {{$error}} </li>
-                @endforeach
-            </ul>
-        </div>
+        @endforeach
+        </ul>
+    </div>
 
-        @endif
+    @endif
 
-        <form method="post" action="/posts/{{ $post->id }}">
-            @csrf
-            <input type="hidden" name="_method" value="put">
-            {{-- <input type="hidden" name="id" value="{{$post->id}}"> --}}
-            <div class="form-group">
+    <form method="post" action="/posts/{{ $post->id }}">
+        @csrf
+        <input type="hidden" name="_method" value="put"> --}}
+        {{-- <input type="hidden" name="id" value="{{$post->id}}"> --}}
+        {{-- <div class="form-group">
                 <label for="exampleInputEmail1">Title</label>
                 <input type="text" class="form-control" name="title" value="{{$post->title}}">
 
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Content</label>
-                <textarea name="content" class="form-control" cols="80" rows="8">{{$post->content}}</textarea>
-            </div>
+</div>
+<div class="form-group">
+    <label for="exampleInputPassword1">Content</label>
+    <textarea name="content" class="form-control" cols="80" rows="8">{{$post->content}}</textarea>
+</div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-default" onclick="window.history.back()">Cancel</button>
-        </form>
-    </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-default" onclick="window.history.back()">Cancel</button>
+</form> --}}
+</div>
 </div>
 
 @endsection
