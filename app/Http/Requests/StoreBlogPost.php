@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBlogPost extends FormRequest
@@ -13,7 +13,17 @@ class StoreBlogPost extends FormRequest
      */
     public function authorize()
     {
-        return true;
+
+        $post = request()->post;
+        if (!isset($post)) {
+            return true;
+        }
+        if ($post->user_id === Auth::id()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
