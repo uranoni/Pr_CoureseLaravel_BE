@@ -63,8 +63,8 @@ class PostController extends Controller
         // ]);
         $post->fill($request->all());
 
-        $datetime = date("Y-m-d H:i:s");
-        $post->updated_at =  $datetime;
+        // $datetime = date("Y-m-d H:i:s");
+        // $post->updated_at =  $datetime;
         $post->save();
 
         return redirect('/posts/admin');
