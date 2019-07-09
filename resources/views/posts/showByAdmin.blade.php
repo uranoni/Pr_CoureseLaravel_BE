@@ -23,9 +23,12 @@
 <div class="page-content">
     <div class="container">
         <h1>{{ $post->title }}</h1>
-        <small class="author">{{$post->user->name}}</small>
+        @if (isset($post->category))
+        <small class="d-block text-muted">{{ $post->category->name }}</small>
+        @endif
+        <small class="author">{{ $post->user->name }}</small>
         <div class="toolbox">
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
+            <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary">Edit</a>
             <button class="btn btn-danger" onclick="deletePost({{ $post->id }}) ">Delete</button>
         </div>
         <div class=" content">
