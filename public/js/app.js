@@ -49369,6 +49369,19 @@ document.deletePost = function (id) {
   }
 };
 
+document.deleteCategory = function (id) {
+  var result = confirm('Do you want to delete the deleteCategory?');
+
+  if (result) {
+    var actionUrl = "/categories/" + id;
+    $.post(actionUrl, {
+      _method: "delete"
+    }).done(function () {
+      location.href = "/categories";
+    });
+  }
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

@@ -41,3 +41,14 @@ document.deletePost = (id) => {
         })
     }
 };
+
+
+document.deleteCategory = (id) => {
+    let result = confirm('Do you want to delete the deleteCategory?');
+    if (result) {
+        let actionUrl = "/categories/" + id;
+        $.post(actionUrl, { _method: "delete" }).done(function () {
+            location.href = "/categories";
+        })
+    }
+};
