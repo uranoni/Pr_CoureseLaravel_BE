@@ -1,7 +1,8 @@
-// 修改css 把原本laravel 刪掉 只留下variable
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 // Variables
 @import 'variables';
 
-.toolbox {
-    margin-bottom: 10px;
-}
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
