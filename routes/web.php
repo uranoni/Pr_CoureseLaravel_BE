@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/posts/{post}/edit','PostController@edit');
 Route::get('/posts','PostController@index');
 Route::get('/posts/category/{category}','PostController@indexWithCategory');
+Route::get('/posts/tag/{tag}','PostController@indexWithTag');
 Route::get('/posts/{post}','PostController@show');
 
 Auth::routes();

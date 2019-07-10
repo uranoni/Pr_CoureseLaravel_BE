@@ -10,6 +10,11 @@
                     /{{ request()->category->name }}
 
                     @endif
+
+                    @if (request()->tag)
+                    #{{ request()->tag->name }}
+
+                    @endif
                 </h4>
                 <ol class="breadcrumb">
                     <li><a href="/">Home</a>

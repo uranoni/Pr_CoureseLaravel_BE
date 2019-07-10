@@ -21,7 +21,8 @@ class PostController extends Controller
     {
         $posts = Post::all();
         $categories = Category::all();
-        return view('posts.index',['posts'=>$posts,'categories'=>$categories]);
+        $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get();
+        return view('posts.index',['posts'=>$posts,'categories'=>$categories,'tags'=>$tags]);
     }
     public function indexWithCategory(Category $category)
     {
@@ -29,6 +30,16 @@ class PostController extends Controller
         $categories = Category::all();
         return view('posts.index',['posts'=>$posts,'categories'=>$categories]);
     }
+
+    public function indexWithTag(Tag $tag)
+    {
+        $posts = $tag->posts;
+        $categories = Category::all();
+        // $tags = Tag::all();
+        $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get();
+        return view('posts.index',['posts'=>$posts , 'categories'=>$categories,'tags'=>$tags]);
+    }
+
     public function create()
     {
         $post = new Post;
@@ -44,7 +55,7 @@ class PostController extends Controller
         $post->save();
 
         $tags  = explode(',',$request->tags);
-        $this->addTagsToPost($tags,$posts);
+        $this->addTagsToPost($tags,$post);
 
         return redirect('/posts');
     }
@@ -58,9 +69,9 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-
+            $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get();
             $categories = Category::all();
-            return view('posts.show',['post'=>$post,'categories'=>$categories]);
+            return view('posts.show',['post'=>$post,'categories'=>$categories,'tags'=>$tags]);
 
     }
 
