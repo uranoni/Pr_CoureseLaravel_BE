@@ -52,3 +52,13 @@ document.deleteCategory = (id) => {
         })
     }
 };
+
+document.deleteTag = (id) => {
+    let result = confirm('Do you want to delete the deleteTag?');
+    if (result) {
+        let actionUrl = "/tags/" + id;
+        $.post(actionUrl, { _method: "delete" }).done(function () {
+            location.href = "/tags";
+        })
+    }
+};

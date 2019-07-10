@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/posts/{post}','PostController@destory');
 
     Route::resource('categories', 'CategoryController')->except(['show']);
+    Route::resource('tags', 'TagController')->only(['index','destory']);
 });
 
 
