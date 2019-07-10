@@ -38,24 +38,22 @@ class PostController extends Controller
 
     public function store(StoreBlogPost $request)
     {
-        // $request->validate([
-        //     'title'=>'required|max:255',
-        //     'content'=>'required',
-        // ]);
         $post = new Post;
         $post->fill($request->all());
         $post->user_id = Auth::id();
         $post->save();
 
         $tags  = explode(',',$request->tags);
+        $this->addTagsToPost($tags,$posts);
+
+        return redirect('/posts');
+    }
+
+    private function addTagsToPost($tags,$post){
         foreach($tags as $key => $tag){
-            //massasign
             $model = Tag::firstOrCreate(['name'=>$tag]);
             $post->tags()->attach($model->id);
         }
-
-
-        return redirect('/posts');
     }
 
     public function show(Post $post)
@@ -78,15 +76,17 @@ class PostController extends Controller
 
     public function update(StoreBlogPost $request,Post $post)
     {
-        // $request->validate([
-        //     'title'=>'required|max:255',
-        //     'content'=>'required',
-        // ]);
-        $post->fill($request->all());
 
-        // $datetime = date("Y-m-d H:i:s");
-        // $post->updated_at =  $datetime;
+        $post->fill($request->all());
         $post->save();
+
+        $post->tags()->detach();
+        // foreach($post->tags as $key => $tag){
+        //     $post->tags()->detach($tag->id);
+        // }
+
+        $tags = explode(',',$request->tags);
+        $this->addTagsToPost($tags,$post);
 
         return redirect('/posts/admin');
     }
