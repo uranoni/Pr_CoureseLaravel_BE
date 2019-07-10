@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
 use App\Post;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -46,7 +47,14 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->save();
 
-        //redirect to index
+        $tags  = explode(',',$request->tags);
+        foreach($tags as $key => $tag){
+            //massasign
+            $model = Tag::firstOrCreate(['name'=>$tag]);
+            $post->tags()->attach($model->id);
+        }
+
+
         return redirect('/posts');
     }
 

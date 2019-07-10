@@ -34,6 +34,12 @@ $actionUrl = ($isCreate)? '/posts':'/posts/'.$post->id;
             @endforeach
         </select>
     </div>
+
+    <div class="form-group">
+        <label>Tags</label>
+        <input type="text" class="form-control" name="tags" value="">
+    </div>
+
     <div class="form-group">
         <label>Content</label>
         <textarea name="content" class="form-control" cols="80" rows="8">{{$post->content}}</textarea>
