@@ -19,8 +19,9 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('posts',function(Blueprint $table){
+        Schema::table('posts', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id')->after('user_id')->nullable();
+
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
         });
     }
@@ -32,10 +33,11 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts',function(Blueprint $table){
+        Schema::table('posts', function (Blueprint $table) {
             $table->dropForeign(['category_id']);
             $table->dropColumn('category_id');
         });
+
         Schema::dropIfExists('categories');
     }
 }

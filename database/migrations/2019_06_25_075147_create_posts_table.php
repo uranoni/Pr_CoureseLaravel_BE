@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             // $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->text('content');
@@ -31,9 +31,10 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        // Schema::table('posts',function(Blueprint $table){
+        // Schema::table('posts', function(BluePrint $table) { //要把ForeignKey解除才能刪除table
         //     $table->dropForeign(['user_id']);
         // });
+
         Schema::dropIfExists('posts');
     }
 }
