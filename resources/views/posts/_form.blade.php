@@ -14,16 +14,24 @@ $actionUrl = ($isCreate)? '/posts':'/posts/'.$post->id;
 
 @endif
 
-<form method="POST" action=" {{ $actionUrl }} ">
+<form method="POST" action=" {{ $actionUrl }} " enctype="multipart/form-data">
     @csrf
     @if (!$isCreate)
     <input type="hidden" name="_method" value="put">
     @endif
+
     <div class="form-group">
         <label>Title</label>
         <input type="text" class="form-control" name="title" value="{{$post->title}}">
+    </div>
+
+
+    <div class="form-group">
+        <label>Thumbnail</label>
+        <input type="file" class="form-control" name="thumbnail">
 
     </div>
+
     <div class="form-group">
         <label>Category</label>
         <select class="form-control" name="category_id">
