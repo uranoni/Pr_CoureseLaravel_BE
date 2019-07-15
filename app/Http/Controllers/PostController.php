@@ -14,21 +14,21 @@ class PostController extends Controller
     public function admin()
     {
         $posts = Post::all();
-        return view('posts.admin',['posts'=>$posts]);
+        return view('posts.admin', ['posts' => $posts]);
     }
 
     public function index()
     {
         $posts = Post::all();
         $categories = Category::all();
-        $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get();
-        return view('posts.index',['posts'=>$posts,'categories'=>$categories,'tags'=>$tags]);
+        $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count', 'desc')->get();
+        return view('posts.index', ['posts' => $posts, 'categories' => $categories, 'tags' => $tags]);
     }
     public function indexWithCategory(Category $category)
     {
-        $posts = Post::Where('category_id',$category->id)->get();
+        $posts = Post::Where('category_id', $category->id)->get();
         $categories = Category::all();
-        return view('posts.index',['posts'=>$posts,'categories'=>$categories]);
+        return view('posts.index', ['posts' => $posts, 'categories' => $categories]);
     }
 
     public function indexWithTag(Tag $tag)
@@ -36,15 +36,15 @@ class PostController extends Controller
         $posts = $tag->posts;
         $categories = Category::all();
         // $tags = Tag::all();
-        $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get();
-        return view('posts.index',['posts'=>$posts , 'categories'=>$categories,'tags'=>$tags]);
+        $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count', 'desc')->get();
+        return view('posts.index', ['posts' => $posts, 'categories' => $categories, 'tags' => $tags]);
     }
 
     public function create()
     {
         $post = new Post;
         $categories = Category::all();
-        return view('posts.create',['post' => $post,'categories'=>$categories]);
+        return view('posts.create', ['post' => $post, 'categories' => $categories]);
     }
 
     public function store(StoreBlogPost $request)
@@ -54,41 +54,51 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->save();
 
-        $tags  = explode(',',$request->tags);
-        $this->addTagsToPost($tags,$post);
+        $tags = $this->stringToTags(($request->tags));
+
+        $this->addTagsToPost($tags, $post);
 
         return redirect('/posts');
     }
+    private function stringToTags($string)
+    {
+        $tags  = explode(',', $string);
+        $tags = array_filter($tags);
 
-    private function addTagsToPost($tags,$post){
-        foreach($tags as $key => $tag){
-            $model = Tag::firstOrCreate(['name'=>$tag]);
+        foreach ($tags as $key => $tag) {
+            $tags[$key] = trim($tag);
+        }
+        return $tags;
+    }
+
+    private function addTagsToPost($tags, $post)
+    {
+        foreach ($tags as $key => $tag) {
+            $model = Tag::firstOrCreate(['name' => $tag]);
             $post->tags()->attach($model->id);
         }
     }
 
     public function show(Post $post)
     {
-            $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count','desc')->get();
-            $categories = Category::all();
-            return view('posts.show',['post'=>$post,'categories'=>$categories,'tags'=>$tags]);
-
+        $tags = Tag::has('posts')->withCount('posts')->orderBy('posts_count', 'desc')->get();
+        $categories = Category::all();
+        return view('posts.show', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
     }
 
     public function showByAdmin(Post $post)
     {
         $categories = Category::all();
-        return view('posts.showByAdmin',['post'=>$post]);
-
+        return view('posts.showByAdmin', ['post' => $post]);
     }
 
     public function edit(Post $post)
     {
-        $categories =Category::all();
-        return view('posts.edit',['post' => $post , 'categories'=>$categories]);
+        $categories = Category::all();
+        return view('posts.edit', ['post' => $post, 'categories' => $categories]);
     }
 
-    public function update(StoreBlogPost $request,Post $post)
+    public function update(StoreBlogPost $request, Post $post)
     {
 
         $post->fill($request->all());
@@ -99,8 +109,8 @@ class PostController extends Controller
         //     $post->tags()->detach($tag->id);
         // }
 
-        $tags = explode(',',$request->tags);
-        $this->addTagsToPost($tags,$post);
+        $tags = $this->stringToTags($request->tags);
+        $this->addTagsToPost($tags, $post);
 
         return redirect('/posts/admin');
     }
@@ -110,5 +120,4 @@ class PostController extends Controller
         $post->delete();
         // return redirect('/posts/admin');
     }
-
 }
