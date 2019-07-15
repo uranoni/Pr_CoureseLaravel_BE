@@ -27,7 +27,10 @@ $actionUrl = ($isCreate)? '/posts':'/posts/'.$post->id;
 
 
     <div class="form-group">
-        <label>Thumbnail</label>
+        <label class="d-block">Thumbnail</label>
+        @if ($post->thumbnail)
+        <img src="{{ $post->thumbnail }}" alt="thumbnail">
+        @endif
         <input type="file" class="form-control" name="thumbnail">
 
     </div>
