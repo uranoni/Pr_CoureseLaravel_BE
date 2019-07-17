@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 date_default_timezone_set("Asia/Taipei");
 Route::get('/', function () {
     return view('index');
@@ -25,26 +27,26 @@ Route::get('/contact', function () {
 
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/posts/admin','PostController@admin');
-    Route::get('/posts/create','PostController@create');
-    Route::get('/posts/show/{post}','PostController@showByAdmin');
+    Route::get('/posts/admin', 'PostController@admin');
+    Route::get('/posts/create', 'PostController@create');
+    Route::get('/posts/show/{post}', 'PostController@showByAdmin');
 
 
-    Route::post('/posts','PostController@store');
-    Route::get('/posts/{post}','PostController@show');
-    Route::put('/posts/{post}','PostController@update');
-    Route::delete('/posts/{post}','PostController@destory');
+    Route::post('/posts', 'PostController@store');
+    Route::get('/posts/{post}', 'PostController@show');
+    Route::put('/posts/{post}', 'PostController@update');
+    Route::delete('/posts/{post}', 'PostController@destory');
 
     Route::resource('categories', 'CategoryController')->except(['show']);
-    Route::resource('tags', 'TagController')->only(['index','destory']);
+    Route::resource('tags', 'TagController')->only(['index', 'destory']);
 });
+Route::resource('comments', 'CommentController')->only(['store', 'update', 'destory']);
 
-
-Route::get('/posts/{post}/edit','PostController@edit');
-Route::get('/posts','PostController@index');
-Route::get('/posts/category/{category}','PostController@indexWithCategory');
-Route::get('/posts/tag/{tag}','PostController@indexWithTag');
-Route::get('/posts/{post}','PostController@show');
+Route::get('/posts/{post}/edit', 'PostController@edit');
+Route::get('/posts', 'PostController@index');
+Route::get('/posts/category/{category}', 'PostController@indexWithCategory');
+Route::get('/posts/tag/{tag}', 'PostController@indexWithTag');
+Route::get('/posts/{post}', 'PostController@show');
 
 Auth::routes();
 
