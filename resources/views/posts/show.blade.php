@@ -270,6 +270,17 @@
                             <h4 class="text-uppercase">Leave a Comments</h4>
                         </div>
 
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $key => $error)
+                                <li> {{$error}} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        @endif
+
                         <form method="post" action="/comments" id="form" role="form" class="blog-comments">
                             @csrf
                             <div class="row">
@@ -277,8 +288,13 @@
                                 <input type="hidden" name="post_id" value="{{$post->id}}">
                                 <div class="col-md-6 form-group">
                                     <!-- Name -->
+                                    @if(Auth::check())
                                     <input type="text" name="name" id="name" class=" form-control" placeholder="Name *"
-                                        maxlength="100" required="">
+                                        maxlength="100" value="{{Auth::user()->name}}">
+                                    @else
+                                    <input type="text" name="name" id="name" class=" form-control" placeholder="Name *"
+                                        maxlength="100">
+                                    @endif
                                 </div>
 
 
