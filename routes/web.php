@@ -40,8 +40,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('categories', 'CategoryController')->except(['show']);
     Route::resource('tags', 'TagController')->only(['index', 'destory']);
 });
-Route::resource('comments', 'CommentController')->only(['store', 'update', 'destory']);
 
+Route::resource('comments', 'CommentController')->only(['store', 'update', 'destory']);
+Route::delete('/comments/{comment}', 'CommentController@destroy');
 Route::get('/posts/{post}/edit', 'PostController@edit');
 Route::get('/posts', 'PostController@index');
 Route::get('/posts/category/{category}', 'PostController@indexWithCategory');

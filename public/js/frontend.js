@@ -12860,6 +12860,36 @@ document.deletePost = function (id) {
   }
 };
 
+toggleCommentForm = function toggleCommentForm(e) {
+  $(e.currentTarget).closest('.comment-info').siblings('.comment-body').toggleClass('edit');
+};
+
+deleteComment = function deleteComment(e) {
+  var result = confirm("delete comment?");
+  var comment = $(e.currentTarget).closest('.media');
+  var action = $(e.currentTarget).data('action');
+
+  if (result) {
+    $.post(action, {
+      _method: 'delete'
+    }).done(function (data) {
+      comment.remove();
+    });
+  }
+};
+
+$('form.update-comment').submit(function (e) {
+  e.preventDefault();
+  var comment = $(e.currentTarget).find('[name="comment"]').val();
+  $.post($(e.currentTarget).attr('action'), {
+    _method: "put",
+    comment: comment
+  }).done(function (data) {
+    $(e.currentTarget).closest('.comment-body').toggleClass('edit');
+    $(e.currentTarget).siblings('p').html(comment);
+  });
+});
+
 /***/ }),
 
 /***/ 1:

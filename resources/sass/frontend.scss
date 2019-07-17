@@ -5,3 +5,18 @@
 .toolbox {
     margin-bottom: 10px;
 }
+
+
+.comment-body{
+    form{
+        display: none;
+    }
+    &.edit{
+        form{
+            display: block;
+        }
+        p{
+            display: none;
+        }
+    }
+}

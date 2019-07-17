@@ -47,3 +47,34 @@ document.deletePost = (id) => {
         })
     }
 };
+
+toggleCommentForm = function (e) {
+
+    $(e.currentTarget).closest('.comment-info').siblings('.comment-body').toggleClass('edit')
+}
+
+deleteComment = function (e) {
+    let result = confirm("delete comment?");
+    let comment = $(e.currentTarget).closest('.media');
+    let action = $(e.currentTarget).data('action');
+    if (result) {
+        $.post(action, {
+            _method: 'delete',
+        }).done(function (data) {
+            comment.remove();
+        })
+    }
+}
+
+$('form.update-comment').submit(function (e) {
+    e.preventDefault();
+
+    let comment = $(e.currentTarget).find('[name="comment"]').val()
+    $.post($(e.currentTarget).attr('action'), {
+        _method: "put",
+        comment: comment,
+    }).done(function (data) {
+        $(e.currentTarget).closest('.comment-body').toggleClass('edit');
+        $(e.currentTarget).siblings('p').html(comment);
+    })
+})
