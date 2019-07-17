@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title','content','category_id'];
+    protected $fillable = ['title', 'content', 'category_id'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo('App\Category');
     }
 
@@ -20,14 +22,20 @@ class Post extends Model
         return $this->belongsToMany('App\Tag');
     }
 
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
     public function tagsString()
     {
         $tagsName = [];
         foreach ($this->tags as $key => $tag) {
-            $tagsName[]=$tag->name;
+            $tagsName[] = $tag->name;
         }
 
-        $tagsString = implode(',',$tagsName);
+        $tagsString = implode(',', $tagsName);
         return $tagsString;
     }
 }
