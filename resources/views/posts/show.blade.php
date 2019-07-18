@@ -132,11 +132,16 @@
 
                                     <div class="comment-info">
                                         <div class="comment-author">
-                                            <a href="#">{{ $comment->user->name }}</a>
+                                            <a href="#">{{ $comment->name }}</a>
+                                            @if($comment->user && $comment->user->id == Auth::id())
+
                                             <button class="btn btn-default"
                                                 onclick="toggleCommentForm(event)">edit</button>
                                             <button class="btn btn-default" onclick="deleteComment(event)"
                                                 data-action="/comments/{{ $comment->id }}">delete</button>
+
+                                            @endif
+
                                         </div>
                                         {{ $comment->created_at->format('F d, Y, ').'at'.$comment->created_at->format('G:i') }}
                                         <a href="#"><i class="fa fa-comment-o"></i>Reply</a>
@@ -147,8 +152,9 @@
                                         </p>
                                         <form class="update-comment" action="/comments/{{ $comment->id }}"
                                             method="post">
-
-                                            <input type="text" name="comment" value="{{$comment->comment}}">
+                                            <input type="hidden" name="post_id" value="{{ $comment ->post->id }}">
+                                            <input type="hidden" name="name" value="{{$comment ->name }}">
+                                            <input type="text" name="comment" value="{{ $comment ->comment }}">
                                             <button>update</button>
                                         </form>
                                     </div>
